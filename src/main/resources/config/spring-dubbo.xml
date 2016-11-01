@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="fqms" owner="tomasky" organization="tomasky"/>
+
+    <!--zookeeper注册中心-->
+   <dubbo:registry protocol="zookeeper" address="192.168.1.38:2181" timeout="90000"/>
+
+    <!--dubbo协议-->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!--监控配置-->
+    <!-- <dubbo:monitor protocol="registry" /> -->
+
+    <!--向外暴露的服务接口-->
+   	<!-- 需要暴露的服务 -->
+   <!-- <dubbo:service interface="com.fanqie.oms.api.test.TestService" ref="testService" timeout="10000"/>-->
+
+    <!--rpc接口-->
+    <dubbo:reference interface="com.tomasky.fqxz.service.IArticleService" id="articleServiceImpl" />
+</beans>
